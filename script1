@@ -30,7 +30,15 @@ if [ $? -eq 0 ]; then
   git fetch origin
   git checkout master
   # git push -u origin master
-  git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+  # git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+
+  # Utilizza git credential-fill per riempire le credenziali
+  git push -u origin master --credential-fill
+
+  # Attendi che Jenkins inserisca le credenziali
+  echo "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+  sleep 5
+
   exit 0
 else
   echo "Errore durante la compilazione"
