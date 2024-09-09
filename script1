@@ -25,20 +25,30 @@ if [ $? -eq 0 ]; then
   # cd /home/jenkins/workspace/task1
   git add main
   counter=$((counter + 1))
+
+
+  git checkout -b master2
   git commit -m "Aggiunto eseguibile compilato Nr. $counter"
   write_counter "$counter"
   git branch -r
   # git fetch origin
   # git checkout master
   
-  # Passa al branch master
+
+
+
+  # (Optional) If necessary, merge the new branch into master after resolving any conflicts
+  # git merge new-branch-name
+
   git checkout master
 
-  # Merge le modifiche dal branch main nel branch master
-  git merge main
-  
-  git push -u origin master
-  # git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+  # (Optional) If necessary, merge the new branch into master after resolving any conflicts
+  git merge master2
+
+  # Push the changes to the remote repository (assuming origin is your remote)
+  git push origin master
+
+
 
   # Utilizza git credential-fill per riempire le credenziali
   # git push -u origin master --credential-fill
