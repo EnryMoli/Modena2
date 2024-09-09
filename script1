@@ -29,7 +29,8 @@ if [ $? -eq 0 ]; then
   write_counter "$counter"
   git fetch origin
   git checkout master
-  git push -u origin master
+  # git push -u origin master
+  git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
   exit 0
 else
   echo "Errore durante la compilazione"
