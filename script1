@@ -33,11 +33,13 @@ if [ $? -eq 0 ]; then
   # git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
 
   # Utilizza git credential-fill per riempire le credenziali
-  git push -u origin master --credential-fill
+  # git push -u origin master --credential-fill
 
-  # Attendi che Jenkins inserisca le credenziali
-  echo "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
-  sleep 5
+  # Utilizza il plugin Git di Jenkins per il push
+  git gc
+  def branch = "master"
+  def credentialsId = "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+  sh "git push -u origin $branch --credentials-id $credentialsId"
 
   exit 0
 else
