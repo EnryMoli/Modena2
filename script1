@@ -27,6 +27,7 @@ if [ $? -eq 0 ]; then
   counter=$((counter + 1))
   git commit -m "Aggiunto eseguibile compilato Nr. $counter"
   write_counter "$counter"
+  git push -u origin master
   exit 0
 else
   echo "Errore durante la compilazione"
