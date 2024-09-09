@@ -1,8 +1,34 @@
+#!/bin/bash
+
 set -xeuo pipefail
+
+CONFIG_FILE=".git/config.count"
+
+read_counter() {
+  if [ -f "$CONFIG_FILE" ]; then
+    read counter < "$CONFIG_FILE"
+  else
+    counter=0
+  fi
+  echo $counter
+}
+
+write_counter() {
+  echo $1 > "$CONFIG_FILE"
+}
 
 gcc main.c -o main
 
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
+  echo "compilazione OK"
+  counter=$(read_counter)
+  # cd /home/jenkins/workspace/task1
+  git add main
+  counter=$((counter + 1))
+  git commit -m "Aggiunto eseguibile compilato Nr. $counter"
+  write_counter "$counter"
+  exit 0
+else
   echo "Errore durante la compilazione"
   exit 1
 fi
