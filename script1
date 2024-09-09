@@ -46,7 +46,7 @@ if [ $? -eq 0 ]; then
   git merge master2
 
   # Push the changes to the remote repository (assuming origin is your remote)
-  git push origin master
+  # git push origin master
 
 
 
