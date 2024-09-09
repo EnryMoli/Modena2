@@ -28,8 +28,15 @@ if [ $? -eq 0 ]; then
   git commit -m "Aggiunto eseguibile compilato Nr. $counter"
   write_counter "$counter"
   git branch -r
-  git fetch origin
+  # git fetch origin
   # git checkout master
+  
+  # Passa al branch master
+  git checkout master
+
+  # Merge le modifiche dal branch main nel branch master
+  git merge main
+  
   git push -u origin master
   # git push -u origin master --credentials-id "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
 
