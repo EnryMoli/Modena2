@@ -37,8 +37,8 @@ if [ $? -eq 0 ]; then
 
   # Utilizza il plugin Git di Jenkins per il push
   git gc
-  def branch = "master"
-  def credentialsId = "8dc5c0da-8691-4b2d-992f-1124c7bce39c"
+  branch="master"
+  credentialsId="8dc5c0da-8691-4b2d-992f-1124c7bce39c"
   sh "git push -u origin $branch --credentials-id $credentialsId"
 
   exit 0
